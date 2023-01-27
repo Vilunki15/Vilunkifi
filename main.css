@@ -20,5 +20,7 @@ ul.ul {
 }
 .gif {
     text-align: center;
+    max-width: 100%;
+    height: auto;
 }
  
