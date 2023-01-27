@@ -1,0 +1,24 @@
+body {
+    background-color: rgb(228,202,172);
+}
+.head {
+    color: rgb(27,53,84);
+    font-size: 1.5em;
+    border: 3px solid green;
+    text-align: center;
+    border-bottom: 2px solid green;
+}
+.paragraphs {
+    border: 3px solid green;
+    color:purple;
+    font-size: 1.5em;
+    text-align: center;
+    border-top: 1px solid green;
+}
+ul.ul {
+    display: inline-block;
+}
+.gif {
+    text-align: center;
+}
+ 
