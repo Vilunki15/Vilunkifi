@@ -32,17 +32,18 @@ img {
 }
 .swiper-slide {
     text-align: center;
-
-    background: #fff;
+    background: rgb(228,202,172);
     display: flex;
     justify-content: center;
     align-items: center;
 }
 .swiper-slide img {
     display: block;
-    width: 100%;
-    height: 100%;
+    width: 50%;
+    height: 50%;
     object-fit: cover;
+    margin-left: auto;
+    margin-right: auto;
 }
 .swiper {
     margin-left: auto;
