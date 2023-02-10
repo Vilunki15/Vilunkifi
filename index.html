@@ -7,8 +7,11 @@
     <title>Vilunki</title>
     <link rel="stylesheet" href="main.css">
     <link rel="icon" type="image/x-icon" href="img/favico.ico">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css" />
+    <script src="script.js"></script>
 </head>
 <body>
+    <!--text-->
     <div class="head">
         <h1>Sivut työn alla</h1>
     </div>
@@ -22,7 +25,52 @@
             <li>React.js</li>
             <li>Dart & Flutter</li>
         </ul>
+        <p>Alla lohdutukseksi herkullinen Vihreä kuula galleria:</p>
     </div>
+    <!--Slider-->
+    <div class="swiper mySwiper">
+        <div class="swiper-wrapper">
+            <div class="swiper-slide"><img src="/kuulat/Glogi.png" alt="Glögi"></div>
+            <div class="swiper-slide"><img src="/kuulat/KaarePohja.png" alt="Kääretorttupohja"></div>
+            <div class="swiper-slide"><img src="/kuulat/KaareTorttu.png" alt="Kääretorttu"></div>
+            <div class="swiper-slide"><img src="/kuulat/Kebab.png" alt=""></div>
+            <div class="swiper-slide"><img src="/kuulat/Laatikko.png" alt=""></div>
+            <div class="swiper-slide"><img src="/kuulat/Laatikot.png" alt=""></div>
+            <div class="swiper-slide"><img src="/kuulat/Leipa.png" alt=""></div>
+            <div class="swiper-slide"><img src="/kuulat/Majo.png" alt=""></div>
+            <div class="swiper-slide"><img src="/kuulat/Mammi.png" alt=""></div>
+            <div class="swiper-slide"><img src="/kuulat/MammiKerma.png" alt=""></div>
+            <div class="swiper-slide"><img src="/kuulat/Marmeladi.png" alt=""></div>
+            <div class="swiper-slide"><img src="/kuulat/Mysli.png" alt=""></div>
+            <div class="swiper-slide"><img src="/kuulat/Nakkari.png" alt=""></div>
+            <div class="swiper-slide"><img src="/kuulat/Pekoni.png" alt=""></div>
+            <div class="swiper-slide"><img src="/kuulat/Pepe.png" alt=""></div>
+            <div class="swiper-slide"><img src="/kuulat/PepePizza.gif" alt=""></div>
+            <div class="swiper-slide"><img src="/kuulat/PizzaKypsa.png" alt=""></div>
+            <div class="swiper-slide"><img src="/kuulat/PizzaRaaka.png" alt=""></div>
+        </div>
+          <div class="swiper-button-next"></div>
+          <div class="swiper-button-prev"></div>
+          <div class="swiper-pagination"></div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>
+    <script>
+        var swiper = new Swiper(".mySwiper", {
+          slidesPerView: 1,
+          spaceBetween: 30,
+          loop: true,
+          pagination: {
+            el: ".swiper-pagination",
+            clickable: true,
+          },
+          navigation: {
+            nextEl: ".swiper-button-next",
+            prevEl: ".swiper-button-prev",
+          },
+        });
+    </script>
+    
+    <!--gif-->
     <div class="gif">
         <img src="img/hopium.gif" alt="hopiumgif">
     </div>
