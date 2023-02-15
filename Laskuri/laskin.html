@@ -5,22 +5,21 @@
     -fontti:
     -2väri kuvat:
     Tänne tulee:
-        3d laskurit:
-            -nopeus 
+        3d laskurit: 
             -kiihtyvyys 
                 lasketaan ehtiikö kiihtyä tarpeeksi tiettyyn nopeuteen tietyllä matkalla
                 Tulokset:
-                    -ehtii kiihtyä true/false (target_speed < sqrt(2 * acceleration * (axis_length / 2)))
-                    -matka täyteen nopeuteen kiihtyneenä 
-                    -kiihdytys ja jarrutusmatka
+                    -ehtii kiihtyä true/false target_speed < sqrt(2 * acceleration * (axis_length / 2))
+                    -matka täyteen nopeuteen kiihtyneenä axis_length - 2 * (target_speed^2) / (2 * acceleration)
+                    -kiihdytys ja jarrutusmatka (target_speed^2) / (2 * acceleration)
                 kaavat:
                     V = sqrt(2*A*D) missä V = suurin saavutettu nopeus A = kiihtyvyys D = kuljettu matka
                     Kuljettu matka täytyy puolittaa
                     speed = sqrt(2 * acceleration * (axis_length / 2))
-                    jos speed > target_speed ; ehtii kiihtyä
+                    kuljettu matka tiedetyllä kiihtyvyydellä ja tavoitenopeudella on S = (V^2) / (2 * A)
             -mm^3 (pi * (layer_height / 2) * /layer_height / 2)) + (2 * (layer_height / 2) * (layer_width - layer_height)) * speed
         yksikkömuunnokset:
-            -2, 10 ja 16 kanta luvut
+            -2, 10 ja 16 kanta 
             -tilavuus
             -pituus
             -massa
@@ -30,8 +29,25 @@
         sähkö:
             -Ohmin laki
             -vastuskoodi
-            -sarja ja rinnan vastus 
+                4, 5 tai 6 värikoodia. kaksi viimeistä on kerroin ja toleranssi. 
+                Viimeine nauha voi olla myös lämpötilanauha
+                valinta monellako nauhalla lasketaan
+                Kaava vastusarvolle
+                "col_1" + "col_2" + "col_3" * col_4
+                kaava toleranssille
+                resistance +/ - (resistance / 100 * col_T)
+            -sarja ja rinnan vastus
+                valinta onko sarjan vai rinna
+                sarjan:
+                    valitaan montako vastusta on, sen jälkeen lisätään arvot yhteen.
+                rinnan:
+                    valitaan montako vastusta on, sen jälkeen lasketaan vastusarvo kaavalla
+                    total_resistance = 1 / ((1/r_1)+(1/r_2)+(1/r_3)) jne
             -akun kesto
+                Valitaan yksiköt jonka jälkeen lasketaan kaavalla
+                battery_hours = capacity_hours / current
+            -akun energia
+                kwh/wh = 
             -virran jakautuminen
             -sarjan ja rinnan konkka
 -->
