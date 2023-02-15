@@ -17,11 +17,13 @@ body {
 }
 ul.ul {
     display: inline-block;
+    border: 3px solid green;
 }
 .gif {
     text-align: center;
     max-width: 100%;
     height: auto;
+    border: 3px solid green;
 }
 img {
     max-width: 100%;
@@ -29,6 +31,7 @@ img {
 .swiper {
     width: 100%;
     height: 100%;
+    border: 3px solid green;
 }
 .swiper-slide {
     text-align: center;
@@ -36,6 +39,8 @@ img {
     display: flex;
     justify-content: center;
     align-items: center;
+    border: 3px solid green;
+    margin-top: auto;
 }
 .swiper-slide img {
     display: block;
@@ -44,8 +49,19 @@ img {
     object-fit: cover;
     margin-left: auto;
     margin-right: auto;
+    ;
+    
 }
 .swiper {
     margin-left: auto;
     margin-right: auto;
+    margin-top: auto;
+    border: 3px solid green;
+}
+.swiper-button-next {
+    justify-content: center;
+    border: 3px solid red;
+}
+.swiper-button-prev {
+    border: 3px solid red;
 }
