@@ -64,15 +64,37 @@
                 Syötetään virta ja vastusten arvot
                 Jokaiselle vastukselle lasketaan virta erikseen
                 Kaavat:
-                    kaksi vastusta: I_1 = I_total * (R_2 / (R_1 + R_2)) ; I_2 = I_total * (R_2 / (R_1 + R_2))
-                    kolme vastusta: I_1 = I_total * (R_2 / (R_1 + R_2 + R_3)) ; I_2 = I_total * (R_2 / (R_1 + R_2 + R_3)) ; 
+                    kaksi vastusta: I_1 = I_total * (R_1 / (R_1 + R_2)) ; I_2 = I_total * (R_2 / (R_1 + R_2))
+                    kolme vastusta: I_1 = I_total * (R_1 / (R_1 + R_2 + R_3)) ; I_2 = I_total * (R_2 / (R_1 + R_2 + R_3)) ; 
                     I_3 = I_total * (R_3 / (R_1 + R_2 + R_3))
                 N määrällä vastuksia kaava:
-                    lasketaan jokaisen vastuksen virta erikseen. N = vastusten määrä X = tietty vastus
                     Ekaksi pitää laskea kokonaisrestistanssi:
                         R_total = R_1 + R_2 + R_N ... jne
-                    Tunnistetaan vastusten määrä K jonka jälkeen suoritetaan loop K kertaa
-                        I_X = I_total * (R_X / R_total)
-                    
+                    1. katsotaan vastusten määrä ja lisätään jokainen arvo listaan
+                    2. tarkistetaan että kaikki arvot ovat double tai int tai float
+                    3. lasketaan R_total listasta
+                    4. tehdään for loop joka suoritetaan listan pituuden kertaa, jokaiselle vastukselle yhdesti.
+                    N = listan pituus X = listan arvo
+                    Suoritetaan N kertaa jokaiselle X arvolle ja lisätään arvot uuteen listaan
+                    Y = lisättävä arvo uuteen listaan
+                    kaava on Y = I_total * R_X / R_total
+                    5. tulostetaan uuden listan arvot yksitellen kenttiin
+            -jännitteen jakautuminen
+                syötteeksi jännite ja kahden vastuksen arvo. arvo lasketaan vastuksen 2 väliltä
+                r_total = kahden vastuksen yhteisarvo
+                kaava:
+                    V_out = (V_in * R_2)/(R_total)
             -sarjan ja rinnan konkka
+                tarvittaessa muunnetaan kaikki yksiköt samaan muotoon
+                sarjan
+                    Sisään N määrä arvoja jotka lisätään listaan
+                    Kaava:
+                        C_Total = (1)/(C_N + C_N)
+                    Lasketaan foreachilla C_N 
+                    Lasketaan sitten C_Total
+                rinnan
+                    Lisätään jokainen arvo listaan
+                    Kaava:
+                    C_Total = C_1 + C_2 + C_N jne
+                Muunnetaan ulostulo kummastakin haluttuun muotoon
 -->
