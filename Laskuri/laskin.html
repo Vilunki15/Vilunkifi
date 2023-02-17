@@ -28,6 +28,14 @@
             -aika kahden pisteen välillä
         sähkö:
             -Ohmin laki
+                Kaksi arvoa vaaditaan, lasku ja reset napit
+                Teho = P, jännite = V, virta = I ja vastus = R
+                kaavat:
+                    P = R * I * I ; I * U ; (U * U) / R
+                    U = I * R ; P / I ; sqrt(P * R)
+                    R = U / I ; P / (I * I) ; (U * U) / P
+                    I = sqrt(P / R) ; P / V ; V / R
+                Neljä arvoa ilmoitetaan, kaksi täytyy olla tyhijä. 
             -vastuskoodi
                 4, 5 tai 6 värikoodia. kaksi viimeistä on kerroin ja toleranssi. 
                 Viimeine nauha voi olla myös lämpötilanauha
@@ -37,7 +45,7 @@
                 kaava toleranssille
                 resistance +/ - (resistance / 100 * col_T)
             -sarja ja rinnan vastus
-                valinta onko sarjan vai rinna
+                valinta onko sarjan vai rinnan
                 sarjan:
                     valitaan montako vastusta on, sen jälkeen lisätään arvot yhteen.
                 rinnan:
@@ -47,7 +55,11 @@
                 Valitaan yksiköt jonka jälkeen lasketaan kaavalla
                 battery_hours = capacity_hours / current
             -akun energia
-                kwh/wh = 
+                valitaan yksikkö kwh / wh ja ah / mah tarvitaan myös jännite
+                Kaavat:
+                    Wh = V * Ah
+                    V = Wh / Ah
+                    Ah = Wh / V
             -virran jakautuminen
             -sarjan ja rinnan konkka
 -->
