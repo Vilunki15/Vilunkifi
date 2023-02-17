@@ -43,7 +43,7 @@
                 Kaava vastusarvolle
                 "col_1" + "col_2" + "col_3" * col_4
                 kaava toleranssille
-                resistance +/ - (resistance / 100 * col_T)
+                resistance +/- (resistance / 100 * col_T)
             -sarja ja rinnan vastus
                 valinta onko sarjan vai rinnan
                 sarjan:
@@ -61,5 +61,18 @@
                     V = Wh / Ah
                     Ah = Wh / V
             -virran jakautuminen
+                Syötetään virta ja vastusten arvot
+                Jokaiselle vastukselle lasketaan virta erikseen
+                Kaavat:
+                    kaksi vastusta: I_1 = I_total * (R_2 / (R_1 + R_2)) ; I_2 = I_total * (R_2 / (R_1 + R_2))
+                    kolme vastusta: I_1 = I_total * (R_2 / (R_1 + R_2 + R_3)) ; I_2 = I_total * (R_2 / (R_1 + R_2 + R_3)) ; 
+                    I_3 = I_total * (R_3 / (R_1 + R_2 + R_3))
+                N määrällä vastuksia kaava:
+                    lasketaan jokaisen vastuksen virta erikseen. N = vastusten määrä X = tietty vastus
+                    Ekaksi pitää laskea kokonaisrestistanssi:
+                        R_total = R_1 + R_2 + R_N ... jne
+                    Tunnistetaan vastusten määrä K jonka jälkeen suoritetaan loop K kertaa
+                        I_X = I_total * (R_X / R_total)
+                    
             -sarjan ja rinnan konkka
 -->
