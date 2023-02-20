@@ -1,9 +1,9 @@
     värit: 
-    -tausta: d90368 // 
-    -reunaviivat ja napin reunat: 291720 // 
-    -fontti: fb8b24 // 
-    -laatikko tausta: 820263 // 
-    -footer ja napin tausta: 04a777 // 
+    -tausta: d90368 // 008148 // 427aa1
+    -reunaviivat ja napin reunat: 291720 // ef8a17 // 679436
+    -fontti: fb8b24 // 034732 // 05668d
+    -laatikko tausta: 820263 // c6c013 // ebf2fa
+    -footer ja napin tausta: 04a777 // ef2917 // a5be00
     Toteutus:
         laskin.html on pääasivu josta löytyy linkit laskureille
         selaimella valikkoja on 3 per rivi, mobiililla 1 per rivi

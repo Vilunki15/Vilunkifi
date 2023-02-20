@@ -1,10 +1,10 @@
 body {
-    background-color: #d90368;
-    color: #fb8b24;
+    background-color: #427aa1;
+    color: #05668d;
     font-size: 5em;
     text-align: center;
     margin: 0px;
-    text-shadow: 0 0 2px black;
+    text-shadow: 0 0 0px black;
     margin-top: 50px;
 }
 .container {
@@ -19,9 +19,9 @@ body {
     flex: 0 0 calc(80% / 3); 
     height: 400px;    
     width: 400px;
-    background-color: #820263;
+    background-color: #ebf2fa;
     margin: 5px;
-    border: 10px solid #291720;
+    border: 10px solid #679436;
     border-radius: 4%;
     box-sizing: border-box;
     transition: all 0.5s ease;
@@ -32,25 +32,26 @@ body {
 }
 @media (max-width: 767px) {
     .box {
-      flex-basis: calc(100% / 1); 
+      flex-basis: calc(90% / 1);
     }
 }
 .apply-button {
-    background-color: #04a777;
-    text-shadow: 0 0 5px black;
-    color: #fb8b24;
+    background-color: #a5be00;
+    text-shadow: 0 0 0px black;
+    color: #05668d;
     border: solid 4px;
     padding: 10px 20px;
     font-size: 48px;
     
 }
 .input-field {
-    background-color: #04a777;
-    color: #086788;
-    font-size: 24px;    
+    background-color: #a5be00;
+    color: #05668d;
+    font-size: 24px;
+    border: solid 4px;    
 }
 footer {
-    background-color: #04a777;
+    background-color: #a5be00;
     position: relative;
     height: 100px;
     display: flex;
