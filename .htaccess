@@ -1,0 +1,2 @@
+ReWriteEngine on
+RewriteRule ^laskimet$ /calculators/calc.html [L]
