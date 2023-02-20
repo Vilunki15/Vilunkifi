@@ -3,6 +3,7 @@
     -reunaviivat ja napit: dd1c1a //
     -fontti: 086788 //
     -2väri kuvat: 06aed5 f0c808 //
+    -footer: 
     Toteutus:
         laskin.html on pääasivu josta löytyy linkit laskureille
         selaimella valikkoja on 3 per rivi, mobiililla 1 per rivi
