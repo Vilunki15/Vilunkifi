@@ -1,9 +1,9 @@
     värit: 
-    -tausta: fff1d0 // 
-    -reunaviivat ja napit: dd1c1a //
-    -fontti: 086788 //
-    -2väri kuvat: 06aed5 f0c808 //
-    -footer: 
+    -tausta: d90368 // 
+    -reunaviivat ja napin reunat: 291720 // 
+    -fontti: fb8b24 // 
+    -laatikko tausta: 820263 // 
+    -footer ja napin tausta: 04a777 // 
     Toteutus:
         laskin.html on pääasivu josta löytyy linkit laskureille
         selaimella valikkoja on 3 per rivi, mobiililla 1 per rivi
@@ -12,6 +12,7 @@
         3d laskurit: 
             -kiihtyvyys 
                 lasketaan ehtiikö kiihtyä tarpeeksi tiettyyn nopeuteen tietyllä matkalla
+                sisään kiihtyvyys ja 
                 Tulokset:
                     -ehtii kiihtyä true/false target_speed < sqrt(2 * acceleration * (axis_length / 2))
                     -matka täyteen nopeuteen kiihtyneenä axis_length - 2 * (target_speed^2) / (2 * acceleration)
