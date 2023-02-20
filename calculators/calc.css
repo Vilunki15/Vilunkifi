@@ -28,7 +28,6 @@ body {
 }
 .box:hover {
     transform: scale(1.05);
-
 }
 @media (max-width: 767px) {
     .box {
@@ -36,22 +35,22 @@ body {
     }
 }
 .apply-button {
-    background-color: #a5be00;
+    background-color: #679436;
     text-shadow: 0 0 0px black;
-    color: #05668d;
+    color: #427aa1;
     border: solid 4px;
     padding: 10px 20px;
     font-size: 48px;
     
 }
 .input-field {
-    background-color: #a5be00;
-    color: #05668d;
+    background-color: #679436;
+    color: #427aa1;
     font-size: 24px;
     border: solid 4px;    
 }
 footer {
-    background-color: #a5be00;
+    background-color: #679436;
     position: relative;
     height: 100px;
     display: flex;
@@ -61,4 +60,5 @@ footer p {
     position: absolute;
     text-align: center;
     font-size: 30px;
+    font-weight: bold;
 }
