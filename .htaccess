@@ -1,2 +1,2 @@
 RewriteEngine on
-RewriteRule ^laskimet$ /calculators/laskimet.html [NC,L]
+RewriteRule ^laskimet$ /calculators/calcLinks.html [NC,L]
