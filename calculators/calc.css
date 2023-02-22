@@ -13,9 +13,9 @@ body {
     justify-content: center;
 }
 .box {
+    align-items: center;
     display: flex;
     justify-content: center;
-    align-items: center;
     flex: 0 0 calc(80% / 3); 
     height: 400px;    
     width: 400px;
@@ -61,4 +61,11 @@ footer p {
     text-align: center;
     font-size: 30px;
     font-weight: bold;
+}
+p {
+    border: solid 3px red;
+    margin: 0;
+}
+img {
+    border: solid 3px violet;
 }
