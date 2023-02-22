@@ -12,7 +12,7 @@
         3d laskurit: 
             -kiihtyvyys 
                 lasketaan ehtiikö kiihtyä tarpeeksi tiettyyn nopeuteen tietyllä matkalla
-                sisään kiihtyvyys ja 
+                kiihtyvyys tarvitaan. Muut kaksi yksikköä toinen tarvitaan. 
                 Tulokset:
                     -ehtii kiihtyä true/false target_speed < sqrt(2 * acceleration * (axis_length / 2))
                     -matka täyteen nopeuteen kiihtyneenä axis_length - 2 * (target_speed^2) / (2 * acceleration)

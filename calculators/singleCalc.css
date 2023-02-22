@@ -10,11 +10,12 @@ body {
 .container {
     flex-direction: row;
     border: 10px solid #679436;
+    border-radius: 5%;
     flex-wrap: wrap;
     display: flex;
     justify-content: center;
-    width: 1000px;
-    height: 600px;
+    width: 800px;
+    height: auto;
     margin: 0 auto;
     background-color: #ebf2fa;
     align-items: center;
@@ -47,7 +48,6 @@ label {
     font-size: 50px;
     display: block;
     margin-bottom: 5px;
-    
 }
 input {
     display: block;
@@ -59,7 +59,6 @@ input {
     font-size: 50px;
     width: 300px;
     margin: 0 auto;
-
 }
 select {
     margin: 0 auto;
@@ -72,6 +71,9 @@ select {
     font-size: 50px;
     padding: 0;
 }
+footer {
+    font-size: 30px;
+}
 @media screen and (max-width: 768px) {
     h3 {
         font-size: 40px;
@@ -82,17 +84,28 @@ select {
       border: none;
       flex-direction: column;
     }
-  
     .box {
       margin: 10px 0;
     }
-  
     .top,
     .bottom {
       width: 100%;
     }
-  
     .bottom {
       display: block;
+    }
+    label {
+        font-size: 40px;
+    }
+    input {
+        border: 5px solid #679436;
+        border-radius: 5px;
+        font-size: 40px;
+
+    }
+    select {
+        border-radius: 5px;
+        border: 5px solid #679436;
+        font-size: 40px;
     }
 }

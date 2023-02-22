@@ -5,11 +5,41 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" type="image/x-icon" href="../../img/favico.ico">
-    <link rel="stylesheet" href="../laskin.css">
+    <link rel="stylesheet" href="../singleCalc.css">
     <script src="../laskin.js"></script>
     <title></title>
 </head>
 <body>
-    
+    <div class="container">
+        <h3>Akun sisältämä energia</h3>
+        <div class="box top">
+            <img src="../testikuva.jpeg" alt="kuva">
+        </div>
+        <div class="box bottom">
+            <div class="box input">
+                <label for="unit">Valitse yksikkö: </label>
+                <select id="unit">
+                    <option value="mms2">kwh</option>
+                    <option value="ms2">wh</option>
+                </select>
+                <label for="inputNum1">Syötä energia: </label>
+                <input type="number" id="inputNum1">
+                <label for="unit">Valitse yksikkö: </label>
+                <select id="unit">
+                    <option value="mms2">ah</option>
+                    <option value="ms2">mah</option>
+                </select>
+                <label for="inputNum2">Syötä virta</label>
+                <input type="number" id="inputNum2">
+                <label for="inputNum3">Syötä jännite</label>
+                <input type="number" id="inputNum3">
+            </div>
+        </div>
+        <div class="footer">
+            <footer>
+                <p>&copy; Vilunki 2023</p>
+            </footer>
+        </div>
+    </div>
 </body>
 </html>
