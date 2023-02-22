@@ -17,19 +17,26 @@
         </div>
         <div class="box bottom">
             <div class="box input">
-                <label for="unit">Valitse yksikkö: </label>
+                <label for="unit">Energiayksikkö: </label>
                 <select id="unit">
                     <option value="mms2">kwh</option>
                     <option value="ms2">wh</option>
                 </select>
-                <label for="inputNum1">Syötä energia: </label>
-                <input type="number" id="inputNum1">
-                <label for="unit">Valitse yksikkö: </label>
+                <label for="unit">Virtatunti yksikkö: </label>
                 <select id="unit">
                     <option value="mms2">ah</option>
                     <option value="ms2">mah</option>
                 </select>
-                <label for="inputNum2">Syötä virta</label>
+                <label for="unit">Jännite yksikkö: </label>
+                <select id="unit">
+                    <option value="mms2">V</option>
+                    <option value="ms2">kV</option>
+                </select>
+            </div>
+            <div class="box output">
+                <label for="inputNum1">Syötä energia: </label>
+                <input type="number" id="inputNum1">
+                <label for="inputNum2">Syötä virtatunti</label>
                 <input type="number" id="inputNum2">
                 <label for="inputNum3">Syötä jännite</label>
                 <input type="number" id="inputNum3">
