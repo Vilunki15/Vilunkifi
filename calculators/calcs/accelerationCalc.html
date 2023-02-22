@@ -15,13 +15,19 @@
 </head>
 <body>
     <div class="container">
+        <h3>Kiihtyvyyslaskin</h3>
         <div class="box top">
             <img src="../testikuva.jpeg" alt="kuva">
         </div>
         <div class="box bottom">
-            
             <div class="box input">
-                <p>input</p>
+                <label for="inputNum1">Syötä kiihtyvyys: </label>
+                <input type="number" id="inputNum1">
+                <select id="unit">
+                    <option value="mms2">mm/s^2</option>
+                    <option value="ms2">m/s^2</option>
+                    <option value="g">g</option>
+                </select>
             </div>
             <div class="box output">
                 <p>output</p>
