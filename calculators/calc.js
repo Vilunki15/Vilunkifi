@@ -1,17 +1,34 @@
 
 document.addEventListener("DOMContentLoaded", function() {
     //Kiihtyvyys eventListenerit ja funktiokutsu:
-    const accUnit = document.getElementById("accUnit");
-    const accAccel = document.getElementById("accAccel");
-    const accDistance = document.getElementById("accDistance");
-    const accTargetSpeed = document.getElementById("accTargetSpeed");
-    const accEventListener = () => {
-        accelerationCalc(accInputList);
+    if (document.body.classList.contains("accelerationCalc")) {
+        const accUnit = document.getElementById("accUnit");
+        const accAccel = document.getElementById("accAccel");
+        const accDistance = document.getElementById("accDistance");
+        const accTargetSpeed = document.getElementById("accTargetSpeed");
+        const accInputs = [accUnit, accAccel, accDistance, accTargetSpeed];
+        const accInputList = nullToZero(accInputs);
+        const accEventListener = () => {
+            accelerationCalc(accInputList);
+        }
+        accInputList.forEach(item => {
+            item.addEventListener("change", accEventListener);
+        });
     }
-    const accInputList = [accUnit, accAccel, accDistance, accTargetSpeed];
-    accInputList.forEach(item => {
-        item.addEventListener("change", accEventListener);
-    });
+    //kantaluku eventlistenerit ja funktiokutsu:
+    if (document.body.classList.contains("baseNumCalc")) {
+        const baseBinary = document.getElementById("baseBinary");
+        const baseNumber = document.getElementById("baseNumber");
+        const baseHex = document.getElementById("baseHex");
+        const baseInputs = [baseBinary, baseNumber, baseHex];
+        const baseInputList = nullToZero(baseInputs);
+        const baseEventListener = () => {
+            console.log('y toimi');
+        }
+        baseInputList.forEach((item) => {
+            item.addEventListener("change", baseEventListener);
+        });
+    }
 });
 
 function accelerationCalc(accInputList) {
@@ -91,6 +108,23 @@ function accelerationCalc(accInputList) {
     //Matka halutussa nopeudessa tarvitsee kaikki kolme arvoa
     //Kiihdytysmatka (jerk 0) tarvitsee kiihtyyvyden ja halutun nopeuden
 }
+//function baseConverter(baseInputList) {
+    //console.log('a toimii');
+//}
 function parseDesimals(parseValue) {
     return parseValue.toFixed(2);
+}
+function nullToZero(ptNullList) {
+    //tarkistaa onko jokin arvo null, jos on laittaa sen tilalle 0
+    //palauttaa uuden listan. 
+    let checkedList = [];
+    for (i = 0; i < ptNullList.length; i++) {
+        if (ptNullList[i] == null) {
+            checkedList.push(0);
+        }
+        else {
+            checkedList.push(ptNullList[i]);
+        }
+    }
+    return checkedList;
 }

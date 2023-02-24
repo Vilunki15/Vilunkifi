@@ -22,7 +22,6 @@ body {
 }
 .box {
     margin: auto 0;
-    border: 3px solid red;
 }
 .top {
     width: 100%;
@@ -34,11 +33,9 @@ body {
     justify-content: space-evenly;
 }
 p {
-    border: 3px solid red;
     margin: 0;
 }
 img {
-    border: 3px solid red;
     margin: 0;
 }
 h3 {
