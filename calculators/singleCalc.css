@@ -14,7 +14,7 @@ body {
     flex-wrap: wrap;
     display: flex;
     justify-content: center;
-    width: 800px;
+    width: 1000px;
     height: auto;
     margin: 0 auto;
     background-color: #ebf2fa;
@@ -57,13 +57,13 @@ input {
     color: #05668d;
     padding: 0;
     font-size: 50px;
-    width: 300px;
+    width: 350px;
     margin: 0 auto;
 }
 select {
     margin: 0 auto;
     background-color: #a5be00;
-    width: 300px;
+    width: 350px;
     height: auto;
     border-radius: 10px;
     border: 10px solid #679436;
