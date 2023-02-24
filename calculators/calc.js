@@ -9,33 +9,39 @@ document.addEventListener("DOMContentLoaded", function() {
     const accInput2 = document.getElementById("accInput2");
     const accInput3 = document.getElementById("accInput3");
     const accEventListener = () => {
-        accelerationCalc(accList);
+        accelerationCalc(accInputList);
     }
-    const accList = [accUnit, accInput1, accInput2, accInput3];
-    accList.forEach(item => {
+    const accInputList = [accUnit, accInput1, accInput2, accInput3];
+    accInputList.forEach(item => {
         item.addEventListener("change", accEventListener);
     });
 });
 
-function accelerationCalc(accList) {
-    let values = [];
-    accList.forEach(item => {
+function accelerationCalc(accInputList) {
+    //Otetaan accInputList arvoista valuet jotka lisätään uuteen
+    //accValues listaan. Jos arvo on tyhjä sen tilalle laitetaan 0.
+    let accValues = [];
+    accInputList.forEach(item => {
         if (item.value == '') {
-            values.push(0);
+            accValues.push(0);
         }
         else {
-            values.push(item.value);
+            accValues.push(item.value);
         }
     });
-    //console.log(values);
+    //Muunnetaan string muotoiset numeroarvot int. 
     for (i = 1; i < 4; i++) {
-        let parseValue = parseInt(values[i]);
-        values[i] = parseValue;
+        let parseValue = parseInt(accValues[i]);
+        accValues[i] = parseValue;
     }
-    if (values[0] == 'm') {
-        values.forEach(item => {
-
-        })
+    //katsotaan yksikkö ja tarvittaessa muunnetaan se.
+    if (accValues[0] == 'mm') {
+        for (i = 1; i < 4; i++) {
+            accValues[i] = accValues[i] * 0.001;
+        }
     }
-    console.log(values);
+    console.log(accValues);
+    if (accValues[1] == 0) {
+        
+    }
 }
