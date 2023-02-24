@@ -69,14 +69,22 @@ function accelerationCalc(accInputList) {
     }
     else if (accValues[1] != 0 && accValues[2] != 0 && accValues[3] != 0) {
         //kaikki arvot laskettavissa
+        let accOutputTrueFalseBoolValue = (accValues[3] < Math.sqrt(2 * accValues[1] * (accValues[2] / 2)));
+        let accTargetSpeedDistanceValue = accValues[2] - (2 * (accValues[3] * accValues[3]) / (2 * accValues[1]));
         let accLengthValue = (accValues[3] * accValues[3]) / (2 * accValues[1]);
-        let accOutputTrueFalseValue = (accValues[3] < Math.sqrt(2 * accValues[1] * (accValues[2] / 2)));
-        let 
-        
-        
-        accOutputTrueFalse.value = '2' 
-        accTargetSpeedDistance.value = 'kiihtyvyys ja'
-        accLength.value = 'tavoitenopeus'
+        if (accOutputTrueFalseBoolValue) {
+            var accOutputTrueFalseValue = 'Kyllä';
+        }
+        else {
+            var accOutputTrueFalseValue = 'Ei';
+        }
+        if (isUnitMM) {
+            accTargetSpeedDistanceValue = accTargetSpeedDistanceValue * 1000;
+            accLengthValue = accLengthValue * 1000;
+        }
+        accOutputTrueFalse.value = accOutputTrueFalseValue; 
+        accTargetSpeedDistance.value = accTargetSpeedDistanceValue;
+        accLength.value = accLengthValue;
 
     }
     else {
