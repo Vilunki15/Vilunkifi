@@ -1,8 +1,5 @@
 
 document.addEventListener("DOMContentLoaded", function() {
-    
-    
-    
     //Kiihtyvyys eventListenerit ja funktiokutsu:
     const accUnit = document.getElementById("accUnit");
     const accAccel = document.getElementById("accAccel");
@@ -53,9 +50,9 @@ function accelerationCalc(accInputList) {
     //jolloin voi laskea kiihdytys ja jarrutusmatkan.
     if (accValues[1] == 0 || accValues[3] == 0) {
         //Liian vähän arvoja
-        accOutputTrueFalse.value = 'Syötä vähintään' 
-        accTargetSpeedDistance.value = 'kiihtyvyys ja'
-        accLength.value = 'tavoitenopeus'
+        accOutputTrueFalse.value = 'Syötä vähintään';
+        accTargetSpeedDistance.value = 'kiihtyvyys ja';
+        accLength.value = 'tavoitenopeus';
     }
     else if (accValues[1] != 0 && accValues[3] != 0 && accValues[2] == 0) {
         //kiihdytys ja jarrutusmatka laskettavissa
@@ -69,10 +66,10 @@ function accelerationCalc(accInputList) {
     }
     else if (accValues[1] != 0 && accValues[2] != 0 && accValues[3] != 0) {
         //kaikki arvot laskettavissa
-        let accOutputTrueFalseBoolValue = (accValues[3] < Math.sqrt(2 * accValues[1] * (accValues[2] / 2)));
+        let accOutputBoolValue = (accValues[3] < Math.sqrt(2 * accValues[1] * (accValues[2] / 2)));
         let accTargetSpeedDistanceValue = accValues[2] - (2 * (accValues[3] * accValues[3]) / (2 * accValues[1]));
         let accLengthValue = (accValues[3] * accValues[3]) / (2 * accValues[1]);
-        if (accOutputTrueFalseBoolValue) {
+        if (accOutputBoolValue) {
             var accOutputTrueFalseValue = 'Kyllä';
         }
         else {
@@ -82,18 +79,22 @@ function accelerationCalc(accInputList) {
             accTargetSpeedDistanceValue = accTargetSpeedDistanceValue * 1000;
             accLengthValue = accLengthValue * 1000;
         }
+        let accLengthValueParsed = parseDesimals(accLengthValue);
+        let accTargetSpeedDistanceValueParsed = parseDesimals(accTargetSpeedDistanceValue);
         accOutputTrueFalse.value = accOutputTrueFalseValue; 
-        accTargetSpeedDistance.value = accTargetSpeedDistanceValue;
-        accLength.value = accLengthValue;
-
+        accTargetSpeedDistance.value = accTargetSpeedDistanceValueParsed;
+        accLength.value = accLengthValueParsed;
     }
     else {
-        accOutputTrueFalse.value = 'error' 
-        accTargetSpeedDistance.value = 'error'
-        accLength.value = 'error'
-        console.log('Something went wrong!')
+        accOutputTrueFalse.value = 'error';
+        accTargetSpeedDistance.value = 'error';
+        accLength.value = 'error';
+        console.log('Something went wrong!');
     }
     //Ehtii kiihtyä tarvitsee kaikki kolme arvoa
     //Matka halutussa nopeudessa tarvitsee kaikki kolme arvoa
     //Kiihdytysmatka (jerk 0) tarvitsee kiihtyyvyden ja halutun nopeuden
+}
+function parseDesimals(parseValue) {
+    return parseValue.toFixed(2);
 }
