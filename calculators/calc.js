@@ -12,10 +12,6 @@ document.addEventListener("DOMContentLoaded", function() {
     accInputList.forEach(item => {
         item.addEventListener("change", accEventListener);
     });
-    //Kiihtyvyys tulokset:
-    const accOutputTrueFalse = document.getElementById("accOutputTrueFalse");
-    const accTargetSpeedDistance = document.getElementById("accTargetSpeedDistance");
-    const accLength = document.getElementById("accLength");
 });
 
 function accelerationCalc(accInputList) {
@@ -44,8 +40,8 @@ function accelerationCalc(accInputList) {
             accValues[i] = accValues[i] * 0.001;
         }
     }
-    console.log(isUnitMM);
-    console.log(accValues);
+    //console.log(isUnitMM);
+    //console.log(accValues);
     //Tarkistetaan että vähintään 2 arvoa
     //jolloin voi laskea kiihdytys ja jarrutusmatkan.
     if (accValues[1] == 0 || accValues[3] == 0) {
