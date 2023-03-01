@@ -12,28 +12,49 @@ document.addEventListener("DOMContentLoaded", function() {
         accInputList.forEach(item => {
             item.addEventListener("change", accEventListener);
         });
-    }
+    } 
     //kantaluku eventlistenerit ja funktiokutsu:
     if (document.body.classList.contains("baseNumCalc")) {
         const baseBinary = document.getElementById("baseBinary");
         const baseNumber = document.getElementById("baseNumber");
         const baseHex = document.getElementById("baseHex");
         const baseInputList = [baseBinary, baseNumber, baseHex];
+        let changeCount = 0;
+        let previLista;
         const baseEventListener = () => {
-            baseConverter(baseInputList);
+            if (changeCount === 0) {
+                console.log(baseInputList[0].value)
+                console.log(baseInputList[1].value)
+                console.log(baseInputList[2].value)
+                previLista = [...baseInputList]
+                console.log('eka lohko')
+            } else {
+                console.log(previLista[0].value)
+                console.log(previLista[1].value)
+                console.log(previLista[2].value)
+                console.log('toka lohko')
+                /** 
+                console.log(baseInputList[0].value + '  eka')
+                console.log(baseInputList[1].value + '  toka')
+                console.log(baseInputList[2].value + '  kolmas')
+                */
+            }
+            changeCount++;
         }
         baseInputList.forEach((item) => {
             item.addEventListener("change", baseEventListener);
         });
+        
+        
     }
 });
 function accelerationCalc(accInputList) {
     //parsitaan listasta null:it pois
     //accValues arvot ovat yksikkö, kiihtyyvys, pituus, nopeus
     let accValues = parseList(accInputList);
-    //Muunnetaan string muotoiset numeroarvot int. 
+    //Muunnetaan string muotoiset numeroarvot float. 
     for (i = 1; i < 4; i++) {
-        let parseValue = parseInt(accValues[i]);
+        let parseValue = parseFloat(accValues[i]);
         accValues[i] = parseValue;
     }
     //katsotaan yksikkö ja tarvittaessa muunnetaan se.
@@ -44,8 +65,6 @@ function accelerationCalc(accInputList) {
             accValues[i] = accValues[i] * 0.001;
         }
     }
-    //console.log(isUnitMM);
-    //console.log(accValues);
     //Tarkistetaan että vähintään 2 arvoa
     //jolloin voi laskea kiihdytys ja jarrutusmatkan.
     if (accValues[1] == 0 || accValues[3] == 0) {
@@ -95,42 +114,42 @@ function accelerationCalc(accInputList) {
     //Matka halutussa nopeudessa tarvitsee kaikki kolme arvoa
     //Kiihdytysmatka (jerk 0) tarvitsee kiihtyyvyden ja halutun nopeuden
 }
-function baseConverter(baseInputList) {
-    let inputList = parseList(baseInputList);
-    const convertBase = () => {
-
-    }
-    let testit = baseInputList[0];
-    testit.addEventListener("change", console.log('0 toimii'));
-    let testit1 = baseInputList[0];
-    testit1.addEventListener("change", console.log('1 toimii'));
-    /** 
-    baseInputList[0].addEventListener("change", console.log('0 toimii'));
-    baseInputList[1].addEventListener("change", console.log('1 toimii'));
-    baseInputList[2].addEventListener("change", console.log('2 toimii'));
+function baseConverter(baseInputList, prevList) {
+    const inputList = parseList(baseInputList);
     
-    baseInputList.forEach((item) => {
-        item.addEventListener("change", convertBase);
-    });
-    console.log(baseInputList);
-    console.log(inputList)
-    */
+    let previousList;
+    if (prevList == null) {
+
+        console.log('nulli');
+    }
+
+    console.log(inputList);
+    //console.log(previousList);
 }
 function parseList(parsingList) {
     //ottaa sisään listan jossa dom event listenerit
     //ottaa .value metodilla arvot
     //jotka palautetaan listana.
     let outputList = [];
-    parsingList.forEach(item => {
-        if (item.value == '') {
+    let runTimeValue;
+    for (i = 0; i < parsingList.length; i++) {
+        runTimeValue = parsingList[i].value;
+        if (runTimeValue == null || runTimeValue == '') {
             outputList.push(0);
         }
         else {
-            outputList.push(item.value);
+            outputList.push(runTimeValue)
         }
-    });
+    }
     return outputList;
 }
 function parseDesimals(parseValue) {
     return parseValue.toFixed(2);
+}
+function listKeeper(inputList, count) {
+    
+    if (count == 0) {
+        return null;
+    }
+    
 }
