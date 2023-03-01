@@ -18,6 +18,8 @@ document.addEventListener("DOMContentLoaded", function() {
         const baseBinary = document.getElementById("baseBinary");
         const baseNumber = document.getElementById("baseNumber");
         const baseHex = document.getElementById("baseHex");
+        const nappi = document.querySelector("nappula")
+        nappi.addEventListener("click", baseEventListener);
         const baseInputLis = [baseBinary, baseNumber, baseHex];
         baseInputList = [...baseInputLis]
         let changeCount = 0;
@@ -43,10 +45,11 @@ document.addEventListener("DOMContentLoaded", function() {
             }
             changeCount++;
         }
+        /** 
         baseInputList.forEach((item) => {
             item.addEventListener("change", baseEventListener);
         });
-        
+        */
         
     }
 });
