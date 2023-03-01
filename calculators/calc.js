@@ -18,10 +18,12 @@ document.addEventListener("DOMContentLoaded", function() {
         const baseBinary = document.getElementById("baseBinary");
         const baseNumber = document.getElementById("baseNumber");
         const baseHex = document.getElementById("baseHex");
-        const baseInputList = [baseBinary, baseNumber, baseHex];
+        const baseInputLis = [baseBinary, baseNumber, baseHex];
+        baseInputList = [...baseInputLis]
         let changeCount = 0;
         let previLista;
         const baseEventListener = () => {
+            //ei toimi!!!!
             if (changeCount === 0) {
                 console.log(baseInputList[0].value)
                 console.log(baseInputList[1].value)
