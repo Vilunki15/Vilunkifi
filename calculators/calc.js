@@ -18,39 +18,31 @@ document.addEventListener("DOMContentLoaded", function() {
         const baseBinary = document.getElementById("baseBinary");
         const baseNumber = document.getElementById("baseNumber");
         const baseHex = document.getElementById("baseHex");
-        const nappi = document.querySelector("nappula")
-        nappi.addEventListener("click", baseEventListener);
-        const baseInputLis = [baseBinary, baseNumber, baseHex];
-        baseInputList = [...baseInputLis]
+        const baseInputList = [baseBinary, baseNumber, baseHex];
         let changeCount = 0;
-        let previLista;
+        let previousList;
+        let currentList;
         const baseEventListener = () => {
-            //ei toimi!!!!
             if (changeCount === 0) {
-                console.log(baseInputList[0].value)
-                console.log(baseInputList[1].value)
-                console.log(baseInputList[2].value)
-                previLista = [...baseInputList]
-                console.log('eka lohko')
+                const firstList = parseList(baseInputList)
+                //printList(firstList) //tulostaa nykyisen listan (vain eka)
+                previousList = [...firstList]
+                //console.log('eka lohko') 
+                baseConverter(firstList, null);
             } else {
-                console.log(previLista[0].value)
-                console.log(previLista[1].value)
-                console.log(previLista[2].value)
-                console.log('toka lohko')
-                /** 
-                console.log(baseInputList[0].value + '  eka')
-                console.log(baseInputList[1].value + '  toka')
-                console.log(baseInputList[2].value + '  kolmas')
-                */
+                currentList = parseList(baseInputList);
+                //printList(previousList); //tulostaa edellisen listan
+                //console.log('----')
+                //printList(currentList) //tulostaa nykyisen listan
+                previousList = parseList(baseInputList)
+                //console.log('toka lohko')
+                baseConverter(currentList, previousList);
             }
             changeCount++;
         }
-        /** 
         baseInputList.forEach((item) => {
             item.addEventListener("change", baseEventListener);
         });
-        */
-        
     }
 });
 function accelerationCalc(accInputList) {
@@ -119,17 +111,17 @@ function accelerationCalc(accInputList) {
     //Matka halutussa nopeudessa tarvitsee kaikki kolme arvoa
     //Kiihdytysmatka (jerk 0) tarvitsee kiihtyyvyden ja halutun nopeuden
 }
-function baseConverter(baseInputList, prevList) {
-    const inputList = parseList(baseInputList);
-    
-    let previousList;
-    if (prevList == null) {
-
-        console.log('nulli');
+function baseConverter(currentList, previousList) {
+    if (previousList == null) {
+        printList(currentList); //tulostaa nykyisen listan
+        console.log('if')
     }
-
-    console.log(inputList);
-    //console.log(previousList);
+    else {
+        printList(previousList) //pitäisi tulostaa edellinen lista, ei tulosta
+        console.log('else')
+        printList(currentList) //tulostaa nykyisen listan
+    }
+    
 }
 function parseList(parsingList) {
     //ottaa sisään listan jossa dom event listenerit
@@ -151,10 +143,13 @@ function parseList(parsingList) {
 function parseDesimals(parseValue) {
     return parseValue.toFixed(2);
 }
-function listKeeper(inputList, count) {
-    
-    if (count == 0) {
-        return null;
-    }
-    
+function printList(list) {
+    list.forEach((item) => {
+        if (item.value != null) {
+            console.log(item.value);
+        }
+        else {
+            console.log(item);
+        }
+    })
 }
