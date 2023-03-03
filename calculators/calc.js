@@ -24,19 +24,13 @@ document.addEventListener("DOMContentLoaded", function() {
         let currentList;
         const baseEventListener = () => {
             if (changeCount === 0) {
-                const firstList = parseList(baseInputList)
-                //printList(firstList) //tulostaa nykyisen listan (vain eka)
-                previousList = [...firstList]
-                //console.log('eka lohko') 
+                const firstList = parseList(baseInputList);
                 baseConverter(firstList, null);
+                previousList = [...firstList];
             } else {
                 currentList = parseList(baseInputList);
-                //printList(previousList); //tulostaa edellisen listan
-                //console.log('----')
-                //printList(currentList) //tulostaa nykyisen listan
-                previousList = parseList(baseInputList)
-                //console.log('toka lohko')
                 baseConverter(currentList, previousList);
+                previousList = parseList(baseInputList);
             }
             changeCount++;
         }
@@ -46,14 +40,18 @@ document.addEventListener("DOMContentLoaded", function() {
     }
 });
 function accelerationCalc(accInputList) {
-    //parsitaan listasta null:it pois
+    //parsitaan listasta null:it pois ja otetaan valuet
     //accValues arvot ovat yksikkö, kiihtyyvys, pituus, nopeus
     let accValues = parseList(accInputList);
-    //Muunnetaan string muotoiset numeroarvot float. 
+    //Muunnetaan string muotoiset numeroarvot float.
+    let ignoreIndex = [0];
+    accValues = stringToFloatList(accValues, ignoreIndex);
+    /** 
     for (i = 1; i < 4; i++) {
         let parseValue = parseFloat(accValues[i]);
         accValues[i] = parseValue;
     }
+    */
     //katsotaan yksikkö ja tarvittaessa muunnetaan se.
     //Luodaan myös boolean on yksikkö mm jolloin tarvitaan muunnokset
     let isUnitMM = accValues[0] == 'mm';
@@ -61,6 +59,14 @@ function accelerationCalc(accInputList) {
         for (i = 1; i < 4; i++) {
             accValues[i] = accValues[i] * 0.001;
         }
+    }
+    //luodaan yksikköpääte
+    let unitString;
+    if (isUnitMM) {
+        unitString = ' mm';
+    }
+    else {
+        unitString = ' m'
     }
     //Tarkistetaan että vähintään 2 arvoa
     //jolloin voi laskea kiihdytys ja jarrutusmatkan.
@@ -78,7 +84,8 @@ function accelerationCalc(accInputList) {
         if (isUnitMM) {
             accLengthValue = accLengthValue * 1000;
         }
-        accLength.value = accLengthValue;
+        let accLengthValueParsed = parseDesimals(accLengthValue);
+        accLength.value = accLengthValueParsed + unitString;
     }
     else if (accValues[1] != 0 && accValues[2] != 0 && accValues[3] != 0) {
         //kaikki arvot laskettavissa
@@ -98,8 +105,8 @@ function accelerationCalc(accInputList) {
         let accLengthValueParsed = parseDesimals(accLengthValue);
         let accTargetSpeedDistanceValueParsed = parseDesimals(accTargetSpeedDistanceValue);
         accOutputTrueFalse.value = accOutputTrueFalseValue; 
-        accTargetSpeedDistance.value = accTargetSpeedDistanceValueParsed;
-        accLength.value = accLengthValueParsed;
+        accTargetSpeedDistance.value = accTargetSpeedDistanceValueParsed + unitString;
+        accLength.value = accLengthValueParsed + unitString;
     }
     else {
         accOutputTrueFalse.value = 'error';
@@ -112,16 +119,44 @@ function accelerationCalc(accInputList) {
     //Kiihdytysmatka (jerk 0) tarvitsee kiihtyyvyden ja halutun nopeuden
 }
 function baseConverter(currentList, previousList) {
+    //ottaa argumenteiksi kaksi listaa. Ensimmäisella kerralla prevlist on aina null
+    //muilla kerroilla vertailee listan eroja ja laskee sen arvon kohdan joka on muuttunut
+    //alla on ensin muuttuneen kohdan valinta jonka jälkeen tulee laskufunktio
+    
     if (previousList == null) {
         printList(currentList); //tulostaa nykyisen listan
         console.log('if')
+        for (i = 0; i < 3; i++) {
+            if (currentList[i] != 0) {
+                calculate(i);
+            }
+        }
+
     }
     else {
-        printList(previousList) //pitäisi tulostaa edellinen lista, ei tulosta
+        printList(previousList) //tulostaa edellisen listan
         console.log('else')
         printList(currentList) //tulostaa nykyisen listan
     }
-    
+    function calculate(i) {
+        switch (i) {
+            case 0:
+                //2 kanta
+                let baseTwo = currentList[0];
+                let baseTen;
+                let baseHex;
+                break;
+            case 1:
+                //10 kanta
+                break;
+            case 2:
+                //16 kanta
+                break;
+            default:
+                console.log('Something went wrong :(');
+                break;
+        }
+    }
 }
 function parseList(parsingList) {
     //ottaa sisään listan jossa dom event listenerit
@@ -152,4 +187,18 @@ function printList(list) {
             console.log(item);
         }
     })
+}
+function stringToFloatList(list, index) {
+    //ottaa list listasta string numerot jotka muunnetaan
+    //floatiksi lukuunottamatta index ignorelistaa
+    let floatList = [];
+    for (i = 0; i < list.length; i++) {
+        if (index.includes(i)) {
+            floatList.push(list[i]);
+        }
+        else {
+            floatList.push(parseFloat(list[i]));
+        }
+    }
+    return floatList;
 }
