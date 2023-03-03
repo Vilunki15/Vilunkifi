@@ -37,6 +37,7 @@ document.addEventListener("DOMContentLoaded", function() {
         baseInputList.forEach((item) => {
             item.addEventListener("change", baseEventListener);
         });
+        
     }
 });
 function accelerationCalc(accInputList) {
@@ -122,10 +123,9 @@ function baseConverter(currentList, previousList) {
     //ottaa argumenteiksi kaksi listaa. Ensimmäisella kerralla prevlist on aina null
     //muilla kerroilla vertailee listan eroja ja laskee sen arvon kohdan joka on muuttunut
     //alla on ensin muuttuneen kohdan valinta jonka jälkeen tulee laskufunktio
-    
+    //funktiota kutsutaan aina kun lista muuttuu
     if (previousList == null) {
-        printList(currentList); //tulostaa nykyisen listan
-        console.log('if')
+        //käynnistys
         for (i = 0; i < 3; i++) {
             if (currentList[i] != 0) {
                 calculate(i);
@@ -134,23 +134,59 @@ function baseConverter(currentList, previousList) {
 
     }
     else {
-        printList(previousList) //tulostaa edellisen listan
-        console.log('else')
-        printList(currentList) //tulostaa nykyisen listan
+        //muut käyttökerrat
+        let diffIndex = currentList.findIndex((value, index) => {
+            return value !== previousList[index];
+        })
+        if (diffIndex == -1) {
+            console.log('Something went wrong :(');
+        }
+        else {
+            calculate(diffIndex);
+        }
     }
+    //funktiota kutsutaan aina kun lista muuttuu ja argumenttinä on muuttunut indeksi
+    //ensin on lambda-funktiot jotka tulostaa arvot ja sen jälkeen itse muuntimet
+    //muuntimet muuntava ensisijaisesti 10 kanta lukuun
+    //jonka jälkeen muunnetaan muihin arvoihin.
+    //toString metodi ei toimi valmiiksi string muotoisilla "numeroilla", 
+    //joten siksi parsitaan
     function calculate(i) {
+        const printBinary = (bin) => {
+            baseBinary.value = bin;
+        }
+        const printNumber = (num) => {
+            baseNumber.value = num;
+        }
+        const printHex = (hex) => {
+            baseHex.value = hex;
+        }
         switch (i) {
             case 0:
                 //2 kanta
-                let baseTwo = currentList[0];
-                let baseTen;
-                let baseHex;
+                let firstCaseBin = currentList[0];
+                let firstCaseTen = parseInt(firstCaseBin, 2)
+                let firstCaseHex = firstCaseTen.toString(16)
+                printNumber(firstCaseTen);
+                printHex(firstCaseHex);
                 break;
             case 1:
                 //10 kanta
+                let secondCaseTen = currentList[1];
+                secondCaseTen = parseInt(secondCaseTen);
+                let secondCaseBin = secondCaseTen.toString(2);
+                let secondCaseHex = secondCaseTen.toString(16);
+                printBinary(secondCaseBin);
+                printHex(secondCaseHex);
                 break;
             case 2:
                 //16 kanta
+                let thirdCaseHex = currentList[2];
+                let thirdCaseTen = parseInt(thirdCaseHex, 16);
+                thirdCaseTen = parseInt(thirdCaseTen);
+                let thirdCaseBin = thirdCaseTen.toString(2);
+                printBinary(thirdCaseBin);
+                printNumber(thirdCaseTen);
                 break;
             default:
                 console.log('Something went wrong :(');
@@ -176,9 +212,11 @@ function parseList(parsingList) {
     return outputList;
 }
 function parseDesimals(parseValue) {
+    //parsii ylimääräiset desimaalit pois
     return parseValue.toFixed(2);
 }
 function printList(list) {
+    //tulostaa konsoliin listan arvot
     list.forEach((item) => {
         if (item.value != null) {
             console.log(item.value);
@@ -191,12 +229,20 @@ function printList(list) {
 function stringToFloatList(list, index) {
     //ottaa list listasta string numerot jotka muunnetaan
     //floatiksi lukuunottamatta index ignorelistaa
+    //kirjaimet muuttuvat NaN
     let floatList = [];
-    for (i = 0; i < list.length; i++) {
-        if (index.includes(i)) {
-            floatList.push(list[i]);
+    if (index != null) {
+        for (i = 0; i < list.length; i++) {
+            if (index.includes(i)) {
+                floatList.push(list[i]);
+            }
+            else {
+                floatList.push(parseFloat(list[i]));
+            }
         }
-        else {
+    }
+    else {
+        for (i = 0; i < list.length; i++) {
             floatList.push(parseFloat(list[i]));
         }
     }
