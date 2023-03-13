@@ -39,6 +39,38 @@ document.addEventListener("DOMContentLoaded", function() {
         });
         
     }
+    //akun energia:
+    if (document.body.classList.contains("batteryEnergyCalc")) {
+        console.log('toimii')
+        const battEnergyUnit = document.getElementById("battEnergyUnit");
+        const battCurrentUnit = document.getElementById("battCurrentUnit");
+        const battVoltageUnit = document.getElementById("battVoltageUnit");
+        const battEnergy = document.getElementById("battEnergy");
+        const battCurrent = document.getElementById("battCurrent");
+        const battVoltage = document.getElementById("battVoltage");
+        const battInputList = [battEnergyUnit, battCurrentUnit, battVoltageUnit, battEnergy, battCurrent, battVoltage];
+        let changeCount = 0;
+        let previousList;
+        let currentList;
+        const battEventListener = () => {
+            if (changeCount === 0) {
+                const firstList = parseList(battInputList);
+                battEnergyCalc(firstList, null);
+                previousList = [...firstList];
+                console.log(1)
+            }
+            else {
+                currentList = parseList(battInputList)
+                battEnergyCalc(currentList, previousList);
+                previousList = parseList(battInputList);
+                console.log(2)
+            }
+            changeCount++;
+        }
+        battInputList.forEach((item) => {
+            item.addEventListener("change", battEventListener);
+        })
+    }
 });
 function accelerationCalc(accInputList) {
     //parsitaan listasta null:it pois ja otetaan valuet
@@ -193,6 +225,9 @@ function baseConverter(currentList, previousList) {
                 break;
         }
     }
+}
+function battEnergyCalc(currentList, previousList) {
+
 }
 function parseList(parsingList) {
     //ottaa sisään listan jossa dom event listenerit

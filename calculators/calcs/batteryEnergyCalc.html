@@ -6,10 +6,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" type="image/x-icon" href="../../img/favico.ico">
     <link rel="stylesheet" href="../singleCalc.css">
-    <script src="../laskin.js"></script>
+    <script src="../calc.js"></script>
     <title></title>
 </head>
-<body>
+<body class="batteryEnergyCalc">
     <div class="container">
         <h3>Akun sisältämä energia</h3>
         <div class="box top">
@@ -17,29 +17,29 @@
         </div>
         <div class="box bottom">
             <div class="box input">
-                <label for="unit">Energiayksikkö: </label>
-                <select id="unit">
-                    <option value="mms2">kwh</option>
-                    <option value="ms2">wh</option>
+                <label for="battEnergyUnit">Energiayksikkö: </label>
+                <select id="battEnergyUnit">
+                    <option value="wh">wh</option>
+                    <option value="kwh">kwh</option>
                 </select>
-                <label for="unit">Virtatunti yksikkö: </label>
-                <select id="unit">
-                    <option value="mms2">ah</option>
-                    <option value="ms2">mah</option>
+                <label for="battCurrentUnit">Virtatunti yksikkö: </label>
+                <select id="battCurrentUnit">
+                    <option value="ah">ah</option>
+                    <option value="mah">mah</option>
                 </select>
-                <label for="unit">Jännite yksikkö: </label>
-                <select id="unit">
-                    <option value="mms2">V</option>
-                    <option value="ms2">kV</option>
+                <label for="battVoltageUnit">Jännite yksikkö: </label>
+                <select id="battVoltageUnit">
+                    <option value="v">V</option>
+                    <option value="kv">kV</option>
                 </select>
             </div>
             <div class="box output">
-                <label for="inputNum1">Syötä energia: </label>
-                <input type="number" id="inputNum1">
-                <label for="inputNum2">Syötä virtatunti</label>
-                <input type="number" id="inputNum2">
-                <label for="inputNum3">Syötä jännite</label>
-                <input type="number" id="inputNum3">
+                <label for="battEnergy">Syötä energia: </label>
+                <input type="number" id="battEnergy">
+                <label for="battCurrent">Syötä virtatunti: </label>
+                <input type="number" id="battCurrent">
+                <label for="battVoltage">Syötä jännite: </label>
+                <input type="number" id="battVoltage">
             </div>
         </div>
         <div class="footer">
