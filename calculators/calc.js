@@ -37,11 +37,9 @@ document.addEventListener("DOMContentLoaded", function() {
         baseInputList.forEach((item) => {
             item.addEventListener("change", baseEventListener);
         });
-        
     }
     //akun energia:
     if (document.body.classList.contains("batteryEnergyCalc")) {
-        console.log('toimii')
         const battEnergyUnit = document.getElementById("battEnergyUnit");
         const battCurrentUnit = document.getElementById("battCurrentUnit");
         const battVoltageUnit = document.getElementById("battVoltageUnit");
@@ -57,13 +55,13 @@ document.addEventListener("DOMContentLoaded", function() {
                 const firstList = parseList(battInputList);
                 battEnergyCalc(firstList, null);
                 previousList = [...firstList];
-                console.log(1)
+                //console.log(1)
             }
             else {
                 currentList = parseList(battInputList)
                 battEnergyCalc(currentList, previousList);
                 previousList = parseList(battInputList);
-                console.log(2)
+                //console.log(2)
             }
             changeCount++;
         }
@@ -163,7 +161,6 @@ function baseConverter(currentList, previousList) {
                 calculate(i);
             }
         }
-
     }
     else {
         //muut käyttökerrat
@@ -227,7 +224,67 @@ function baseConverter(currentList, previousList) {
     }
 }
 function battEnergyCalc(currentList, previousList) {
-
+    //kummastakin listasta seurataan numereesia, eli kolmea viimeistä arvoa
+    //luodaan booleanit onko numereeniset arvot jotain muuta kuin 0
+    //tarkistetaan myös onko prevlist null, koska ensimmäisellä ajokerralla se on
+    //tämän jälkeen tulee ehtorakenne minkä eka lohko ajetaan kun numerot muuttuu ekan kerran
+    //ja toinen lohko ajetaan kun numerot ovat muuttuneet n kertaa kun n != 0
+    let isCurrentListNonZero = currentList[3] == 0 && currentList[4] == 0 && currentList[5] == 0;
+    let isPreviousListNonZero;
+    if (previousList != null) {
+        isPreviousListNonZero = previousList[3] == 0 && previousList[4] == 0 && previousList[5] == 0;
+    }
+    //muutetaan vastakohdaksi
+    isCurrentListNonZero = !isCurrentListNonZero;
+    //ajokertalohkot:
+    if (isCurrentListNonZero) {
+        if (isPreviousListNonZero) {
+            //eka ajokerta, lasketaan ainut != 0 arvon perusteella
+            console.log('eka')
+            for (i = 3; i > 6; i++) {
+                if (currentList[i] != 0) {
+                    calculate(i);
+                }
+            }
+        }
+        else {
+            //tarkistetaan onko eka vai muu ajokerta. sen jälkeen lasketaan muuttuneen indexin perusteella
+            if (previousList == null) {
+                console.log('eka')
+                for (i = 3; i < 6; i++) {
+                    if (currentList[i] != 0) {
+                        calculate(i);
+                    }
+                }
+            }
+            else {
+                let diffIndex = currentList.findIndex((value, index) => {
+                    return value !== previousList[index];
+                })
+                if (diffIndex == -1) {
+                    console.log('Something went wrong :(');
+                }
+                else {
+                    calculate(diffIndex);
+                }
+                console.log('muut')
+            }
+        }
+    }
+    function calculate(i) {
+        //laskufunktio ottaa argumentiksi i siemenarvoindexin
+        //eli tulokset lasketaan i indexistä
+        console.log(i);
+        switch (i) {
+            case 3:
+                break;
+            case 4:
+                break;
+            case 5:
+                break;
+            
+        }
+    }
 }
 function parseList(parsingList) {
     //ottaa sisään listan jossa dom event listenerit
