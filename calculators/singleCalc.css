@@ -45,6 +45,7 @@ label {
     font-size: 50px;
     display: block;
     margin-bottom: 5px;
+    border: 3px solid red;
 }
 input {
     display: block;
@@ -56,9 +57,26 @@ input {
     font-size: 50px;
     width: 350px;
     margin: 0 auto;
+    border: 3px solid red;
+}
+button {
+    display: block;
+    background-color: #a5be00;
+    border: 10px solid #679436;
+    border-radius: 10px;
+    color: #05668d;
+    padding: 0;
+    font-size: 50px;
+    width: 355px;
+    margin-top: 50px;
+    margin-bottom: 10px;
+    margin-left: auto;
+    margin-right: auto;
+    border: 3px solid red;
 }
 select {
     margin: 0 auto;
+    display: block;
     background-color: #a5be00;
     width: 350px;
     height: auto;
@@ -67,6 +85,7 @@ select {
     color: #05668d;
     font-size: 50px;
     padding: 0;
+    border: 3px solid red;
 }
 footer {
     font-size: 30px;
@@ -76,20 +95,20 @@ footer {
         font-size: 40px;
     }
     .container {
-      width: 100%;
-      height: auto;
-      border: none;
-      flex-direction: column;
+        width: 100%;
+        height: auto;
+        border: none;
+        flex-direction: column;
     }
     .box {
-      margin: 10px 0;
+        margin: 10px 0;
     }
     .top,
     .bottom {
-      width: 100%;
+        width: 100%;
     }
     .bottom {
-      display: block;
+        display: block;
     }
     label {
         font-size: 40px;
@@ -103,6 +122,11 @@ footer {
     select {
         border-radius: 5px;
         border: 5px solid #679436;
+        font-size: 40px;
+    }
+    button {
+        border: 5px solid #679436;
+        border-radius: 5px;
         font-size: 40px;
     }
 }

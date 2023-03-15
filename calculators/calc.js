@@ -250,7 +250,6 @@ function battEnergyCalc(currentList, previousList) {
         else {
             //tarkistetaan onko eka vai muu ajokerta. sen jälkeen lasketaan muuttuneen indexin perusteella
             if (previousList == null) {
-                console.log('eka')
                 for (i = 3; i < 6; i++) {
                     if (currentList[i] != 0) {
                         calculate(i);
@@ -267,22 +266,37 @@ function battEnergyCalc(currentList, previousList) {
                 else {
                     calculate(diffIndex);
                 }
-                console.log('muut')
             }
         }
     }
     function calculate(i) {
         //laskufunktio ottaa argumentiksi i siemenarvoindexin
         //eli tulokset lasketaan i indexistä
-        console.log(i);
+        //luodaan myös lambdafunktiot jotka tulostavat arvot
+        const printBattEnergy = (e) => {
+            battEnergy.value = e;
+        }
+        const printBattCurrent = (a) => {
+            battCurrent.value = a;
+        }
+        const printBattVoltage = (v) => {
+            battVoltage.value = v;
+        }
         switch (i) {
             case 3:
+                console.log('e')
+                //Wh = V * Ah
+
                 break;
             case 4:
+                console.log('a')
+                //Ah = Wh / V
+                
                 break;
             case 5:
+                console.log('v')
+                //V = Wh / Ah
                 break;
-            
         }
     }
 }
