@@ -32,7 +32,9 @@
                     <option value="v">V</option>
                     <option value="kv">kV</option>
                 </select>
-                <button>Laske</button>
+                <div id="moveButtonFrom">
+                    <button id="calculateButton">Laske</button>
+                </div>
             </div>
             <div class="box output">
                 <label for="battEnergy">Syötä energia: </label>
@@ -41,6 +43,7 @@
                 <input type="number" id="battCurrent">
                 <label for="battVoltage">Syötä jännite: </label>
                 <input type="number" id="battVoltage">
+                <div id="moveButtonTo"></div>
                 <button>Reset</button>
             </div>
         </div>

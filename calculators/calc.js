@@ -55,19 +55,24 @@ document.addEventListener("DOMContentLoaded", function() {
                 const firstList = parseList(battInputList);
                 battEnergyCalc(firstList, null);
                 previousList = [...firstList];
-                //console.log(1)
             }
             else {
                 currentList = parseList(battInputList)
                 battEnergyCalc(currentList, previousList);
                 previousList = parseList(battInputList);
-                //console.log(2)
             }
             changeCount++;
         }
         battInputList.forEach((item) => {
             item.addEventListener("change", battEventListener);
         })
+        let moveButtonFrom = document.getElementById("moveButtonFrom");
+        let moveButtonTo = document.getElementById("moveButtonTo");
+        if (window.innerWidth < 768) {
+            console.log(moveButtonFrom)
+            moveButtonFrom.remove();
+            
+        }
     }
 });
 function accelerationCalc(accInputList) {
@@ -291,7 +296,7 @@ function battEnergyCalc(currentList, previousList) {
             case 4:
                 console.log('a')
                 //Ah = Wh / V
-                
+
                 break;
             case 5:
                 console.log('v')
