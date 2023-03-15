@@ -46,8 +46,10 @@ document.addEventListener("DOMContentLoaded", function() {
         const battEnergy = document.getElementById("battEnergy");
         const battCurrent = document.getElementById("battCurrent");
         const battVoltage = document.getElementById("battVoltage");
-        const battInputList = [battEnergyUnit, battCurrentUnit, battVoltageUnit, battEnergy, battCurrent, battVoltage];
+        let battInputList = [battEnergyUnit, battCurrentUnit, battVoltageUnit, battEnergy, battCurrent, battVoltage];
+        battInputList = parseList(battInputList);
         /** 
+        //turhaa koodia, suunnitelmat muuttui. 
         let changeCount = 0;
         let previousList;
         let currentList;
@@ -74,11 +76,18 @@ document.addEventListener("DOMContentLoaded", function() {
             moveButtonFrom.remove();
             document.getElementById("moveButtonTo").innerHTML = '<button id="calculateButton">Laske</button>';
         }
-        //laske ja reset nappien event listener
+        //laske ja reset nappien event listenerit
+        //alla myös lambdat funktiokutsuille
+        const battCallBackReset = () => {
+            battEnergyCalc(battInputList, 0)
+        }
+        const battCallBackCalc = () => {
+            battEnergyCalc(battInputList, 1)
+        }
         const calculateButton = document.getElementById("calculateButton");
-        calculateButton.addEventListener("click", battEnergyCalc(battInputList, 1));
+        calculateButton.addEventListener("click", battCallBackCalc);
         const resetButton = document.getElementById("resetButton");
-        resetButton.addEventListener("click", battEnergyCalc(battInputList, 0));
+        resetButton.addEventListener("click", battCallBackReset);
     }
 });
 function accelerationCalc(accInputList) {
@@ -236,6 +245,7 @@ function baseConverter(currentList, previousList) {
 }
 /** 
 function battEnergyCalc(currentList, previousList) {
+    //turhaa koodia, suunnitelmat muuttui!
     //kummastakin listasta seurataan numereesia, eli kolmea viimeistä arvoa
     //luodaan booleanit onko numereeniset arvot jotain muuta kuin 0
     //tarkistetaan myös onko prevlist null, koska ensimmäisellä ajokerralla se on
