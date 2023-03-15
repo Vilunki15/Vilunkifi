@@ -47,7 +47,7 @@ document.addEventListener("DOMContentLoaded", function() {
         const battCurrent = document.getElementById("battCurrent");
         const battVoltage = document.getElementById("battVoltage");
         let battInputList = [battEnergyUnit, battCurrentUnit, battVoltageUnit, battEnergy, battCurrent, battVoltage];
-        battInputList = parseList(battInputList);
+        //battInputList = parseList(battInputList);
         /** 
         //turhaa koodia, suunnitelmat muuttui. 
         let changeCount = 0;
@@ -82,6 +82,8 @@ document.addEventListener("DOMContentLoaded", function() {
             battEnergyCalc(battInputList, 0)
         }
         const battCallBackCalc = () => {
+            //console.log(battEnergy.value)
+            //printList(battInputList);
             battEnergyCalc(battInputList, 1)
         }
         const calculateButton = document.getElementById("calculateButton");
@@ -324,16 +326,47 @@ function battEnergyCalc(currentList, previousList) {
 }
 */
 function battEnergyCalc(inputList, mode) {
+    const printBattEnergy = (e) => {
+        battEnergy.value = e;
+    }
+    const printBattCurrent = (a) => {
+        battCurrent.value = a;
+    }
+    const printBattVoltage = (v) => {
+        battVoltage.value = v;
+    }
     switch (mode) {
         case 0:
             console.log('reset')
+            printBattEnergy(0)
+            printBattCurrent(0)
+            printBattVoltage(0)
             break;
         case 1:
-            console.log('laske')
+            //console.log(typeof inputList[3].value)
+            //console.log(parseList(inputList))
+            const ignore = [0, 1, 2]
+            inputList = stringToFloatList(inputList, ignore)
+            console.log(inputList)
+            if (inputList[3] != 0 && inputList[4] != 0) {
+                //V
+                console.log('v')
+            }
+            else if (inputList[3] != 0 && inputList[5] != 0) {
+                //ah
+                console.log('ah')
+            }
+            else if (inputList[4] != 0 && inputList[5] != 0) {
+                //wh
+                console.log('wh')
+            }
             break;
         default:
             break;
     }
+    //Wh = V * Ah
+    //V = Wh / Ah
+    //Ah = Wh / V
 }
 function parseList(parsingList) {
     //ottaa sisään listan jossa dom event listenerit
