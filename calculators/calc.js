@@ -47,6 +47,7 @@ document.addEventListener("DOMContentLoaded", function() {
         const battCurrent = document.getElementById("battCurrent");
         const battVoltage = document.getElementById("battVoltage");
         const battInputList = [battEnergyUnit, battCurrentUnit, battVoltageUnit, battEnergy, battCurrent, battVoltage];
+        /** 
         let changeCount = 0;
         let previousList;
         let currentList;
@@ -66,13 +67,18 @@ document.addEventListener("DOMContentLoaded", function() {
         battInputList.forEach((item) => {
             item.addEventListener("change", battEventListener);
         })
-        let moveButtonFrom = document.getElementById("moveButtonFrom");
-        let moveButtonTo = document.getElementById("moveButtonTo");
+        */
+        //siirretään napin paikkaa toiseen flexboxiin mobiililla allaolevalla koodilla
+        const moveButtonFrom = document.getElementById("moveButtonFrom");
         if (window.innerWidth < 768) {
-            console.log(moveButtonFrom)
             moveButtonFrom.remove();
-            
+            document.getElementById("moveButtonTo").innerHTML = '<button id="calculateButton">Laske</button>';
         }
+        //laske ja reset nappien event listener
+        const calculateButton = document.getElementById("calculateButton");
+        calculateButton.addEventListener("click", battEnergyCalc(battInputList, 1));
+        const resetButton = document.getElementById("resetButton");
+        resetButton.addEventListener("click", battEnergyCalc(battInputList, 0));
     }
 });
 function accelerationCalc(accInputList) {
@@ -228,6 +234,7 @@ function baseConverter(currentList, previousList) {
         }
     }
 }
+/** 
 function battEnergyCalc(currentList, previousList) {
     //kummastakin listasta seurataan numereesia, eli kolmea viimeistä arvoa
     //luodaan booleanit onko numereeniset arvot jotain muuta kuin 0
@@ -303,6 +310,19 @@ function battEnergyCalc(currentList, previousList) {
                 //V = Wh / Ah
                 break;
         }
+    }
+}
+*/
+function battEnergyCalc(inputList, mode) {
+    switch (mode) {
+        case 0:
+            console.log('reset')
+            break;
+        case 1:
+            console.log('laske')
+            break;
+        default:
+            break;
     }
 }
 function parseList(parsingList) {
