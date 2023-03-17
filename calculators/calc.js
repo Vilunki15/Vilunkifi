@@ -326,6 +326,13 @@ function battEnergyCalc(currentList, previousList) {
 }
 */
 function battEnergyCalc(inputList, mode) {
+    let battEnergyUnit;
+    let battCurrentUnit;
+    let battVoltageUnit;
+    if (inputList[0] == 'wh') {
+        
+    }
+    //alla tulostus lambdat jotka tulostaa halutun luvun domiin
     const printBattEnergy = (e) => {
         battEnergy.value = e;
     }
@@ -336,37 +343,64 @@ function battEnergyCalc(inputList, mode) {
         battVoltage.value = v;
     }
     switch (mode) {
+        //mode 0 tai 1 tarkoittaa reset vai laske tilaa
+        //Alla myös tarkistus että lukuja jotka eivät ole 0 on 2kpl
         case 0:
-            console.log('reset')
-            printBattEnergy(0)
-            printBattCurrent(0)
-            printBattVoltage(0)
+            //reset
+            printBattEnergy(0);
+            printBattCurrent(0);
+            printBattVoltage(0);
             break;
         case 1:
-            //console.log(typeof inputList[3].value)
-            //console.log(parseList(inputList))
+            //laske
             const ignore = [0, 1, 2]
-            inputList = stringToFloatList(inputList, ignore)
-            console.log(inputList)
-            if (inputList[3] != 0 && inputList[4] != 0) {
-                //V
-                console.log('v')
+            inputList = parseList(inputList);
+            inputList = stringToFloatList(inputList, ignore);
+            let zeros = 0;
+            let floats = 0;
+            for (i = 3; i < 6; i++) {
+                if (inputList[i] === 0) {
+                    zeros++;
+                }
+                else {
+                    floats++;
+                } 
             }
-            else if (inputList[3] != 0 && inputList[5] != 0) {
-                //ah
-                console.log('ah')
+            if (zeros === 3 || floats === 3 || floats === 1) {
+                //error
+                alert('Syötä kaksi arvoa!');
+                printBattEnergy(0);
+                printBattCurrent(0);
+                printBattVoltage(0);
             }
-            else if (inputList[4] != 0 && inputList[5] != 0) {
-                //wh
-                console.log('wh')
+            else {
+                if (inputList[5] == 0) {
+                    //V
+                    let vOut = inputList[3] / inputList[4];
+                    vOut = parseDesimals(vOut);
+                    printBattVoltage(vOut);
+                }
+                else if (inputList[4] == 0) {
+                    //ah
+                    let ahOut = inputList[3] / inputList[5];
+                    ahOut = parseDesimals(ahOut);
+                    printBattCurrent(ahOut);
+                }
+                else if (inputList[3] == 0) {
+                    //wh
+                    let whOut = inputList[4] * inputList[5];
+                    whOut = parseDesimals(whOut);
+                    printBattEnergy(whOut);
+                }
             }
             break;
         default:
+            console.log('Something went wrong :( !');
             break;
     }
-    //Wh = V * Ah
-    //V = Wh / Ah
-    //Ah = Wh / V
+    //Wh = V * Ah 
+    //V = Wh / Ah 
+    //Ah = Wh / V 
 }
 function parseList(parsingList) {
     //ottaa sisään listan jossa dom event listenerit
