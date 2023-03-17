@@ -47,29 +47,6 @@ document.addEventListener("DOMContentLoaded", function() {
         const battCurrent = document.getElementById("battCurrent");
         const battVoltage = document.getElementById("battVoltage");
         let battInputList = [battEnergyUnit, battCurrentUnit, battVoltageUnit, battEnergy, battCurrent, battVoltage];
-        //battInputList = parseList(battInputList);
-        /** 
-        //turhaa koodia, suunnitelmat muuttui. 
-        let changeCount = 0;
-        let previousList;
-        let currentList;
-        const battEventListener = () => {
-            if (changeCount === 0) {
-                const firstList = parseList(battInputList);
-                battEnergyCalc(firstList, null);
-                previousList = [...firstList];
-            }
-            else {
-                currentList = parseList(battInputList)
-                battEnergyCalc(currentList, previousList);
-                previousList = parseList(battInputList);
-            }
-            changeCount++;
-        }
-        battInputList.forEach((item) => {
-            item.addEventListener("change", battEventListener);
-        })
-        */
         //siirretään napin paikkaa toiseen flexboxiin mobiililla allaolevalla koodilla
         const moveButtonFrom = document.getElementById("moveButtonFrom");
         if (window.innerWidth < 768) {
@@ -326,11 +303,29 @@ function battEnergyCalc(currentList, previousList) {
 }
 */
 function battEnergyCalc(inputList, mode) {
+    const ignore = [0, 1, 2]
+    inputList = parseList(inputList);
+    inputList = stringToFloatList(inputList, ignore);
     let battEnergyUnit;
     let battCurrentUnit;
     let battVoltageUnit;
     if (inputList[0] == 'wh') {
-        
+        battEnergyUnit = 'wh'
+    }
+    else {
+        battEnergyUnit = 'kwh'
+    }
+    if (inputList[1] == 'ah') {
+        battCurrentUnit = 'Ah'
+    }
+    else {
+        battCurrentUnit = 'mAh'
+    }
+    if (inputList[2] == 'v') {
+        battVoltageUnit = 'V'
+    }
+    else {
+        battVoltageUnit = 'V'
     }
     //alla tulostus lambdat jotka tulostaa halutun luvun domiin
     const printBattEnergy = (e) => {
@@ -353,9 +348,6 @@ function battEnergyCalc(inputList, mode) {
             break;
         case 1:
             //laske
-            const ignore = [0, 1, 2]
-            inputList = parseList(inputList);
-            inputList = stringToFloatList(inputList, ignore);
             let zeros = 0;
             let floats = 0;
             for (i = 3; i < 6; i++) {
