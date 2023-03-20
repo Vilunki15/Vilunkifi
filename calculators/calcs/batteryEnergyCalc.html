@@ -23,16 +23,16 @@
                     <option value="mwh">mwh</option>
                     <option value="kwh">kwh</option>
                 </select>
-                <label for="battCurrentUnit">Virtatunti yksikkö: </label>
+                <label for="battCurrentUnit">Amppeeritunti yksikkö: </label>
                 <select id="battCurrentUnit">
                     <option value="ah">Ah</option>
                     <option value="mah">mAh</option>
-
+                    <option value="kah">kAh</option>
                 </select>
                 <label for="battVoltageUnit">Jännite yksikkö: </label>
                 <select id="battVoltageUnit">
                     <option value="v">V</option>
-
+                    <option value="mv">mV</option>
                     <option value="kv">kV</option>
                 </select>
                 <div id="moveButtonFrom">
@@ -41,11 +41,11 @@
             </div>
             <div class="box output">
                 <label for="battEnergy">Syötä energia: </label>
-                <input type="number" id="battEnergy">
+                <input type="text" id="battEnergy">
                 <label for="battCurrent">Syötä virtatunti: </label>
-                <input type="number" id="battCurrent">
+                <input type="text" id="battCurrent">
                 <label for="battVoltage">Syötä jännite: </label>
-                <input type="number" id="battVoltage">
+                <input type="text" id="battVoltage">
                 <div id="moveButtonTo"></div>
                 <button id="resetButton">Reset</button>
             </div>

@@ -312,39 +312,51 @@ function battEnergyCalc(inputList, mode) {
     if (inputList[0] == 'wh') {
         battEnergyUnit = 'wh'
     }
+    else if (inputList[0] == 'mwh') {
+
+    }
     else {
         battEnergyUnit = 'kwh'
     }
     if (inputList[1] == 'ah') {
         battCurrentUnit = 'Ah'
     }
+    else if (inputList[1] == 'mah') {
+
+    }
     else {
-        battCurrentUnit = 'mAh'
+        battCurrentUnit = 'kAh'
     }
     if (inputList[2] == 'v') {
         battVoltageUnit = 'V'
     }
+    else if (inputList[2] == 'mv') {
+        
+    }
     else {
-        battVoltageUnit = 'V'
+        battVoltageUnit = 'kV'
     }
     //alla tulostus lambdat jotka tulostaa halutun luvun domiin
     const printBattEnergy = (e) => {
-        battEnergy.value = e;
+        battEnergy.value = e + battEnergyUnit;
     }
     const printBattCurrent = (a) => {
-        battCurrent.value = a;
+        battCurrent.value = a + battCurrentUnit;
     }
     const printBattVoltage = (v) => {
-        battVoltage.value = v;
+        battVoltage.value = v + battVoltageUnit;
+    }
+    const reset = () => {
+        battEnergy.value = 0;
+        battCurrent.value = 0;
+        battVoltage.value = 0;
     }
     switch (mode) {
         //mode 0 tai 1 tarkoittaa reset vai laske tilaa
         //Alla myös tarkistus että lukuja jotka eivät ole 0 on 2kpl
         case 0:
             //reset
-            printBattEnergy(0);
-            printBattCurrent(0);
-            printBattVoltage(0);
+            reset();
             break;
         case 1:
             //laske
