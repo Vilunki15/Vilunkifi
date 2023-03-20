@@ -309,32 +309,48 @@ function battEnergyCalc(inputList, mode) {
     let battEnergyUnit;
     let battCurrentUnit;
     let battVoltageUnit;
+    let unitList = []; //i0 = e, i1 =  A, i2 = v
     if (inputList[0] == 'wh') {
-        battEnergyUnit = 'wh'
+        battEnergyUnit = 'wh';
+        unitList.push(1);
     }
     else if (inputList[0] == 'mwh') {
-
+        inputList[3] = inputList[3] * 1000;
+        battEnergyUnit = 'mwh';
+        unitList.push(1000);
     }
     else {
-        battEnergyUnit = 'kwh'
+        inputList[3] = inputList[3] / 1000;
+        battEnergyUnit = 'kwh';
+        unitList.push(0.001);
     }
     if (inputList[1] == 'ah') {
-        battCurrentUnit = 'Ah'
+        battCurrentUnit = 'Ah';
+        unitList.push(1);
     }
     else if (inputList[1] == 'mah') {
-
+        inputList[4] = inputList[4] * 1000;
+        battCurrentUnit = 'mAh';
+        unitList.push(1000);
     }
     else {
-        battCurrentUnit = 'kAh'
+        inputList[4] = inputList[4] / 1000;
+        battCurrentUnit = 'kAh';
+        unitList.push(0.001);
     }
     if (inputList[2] == 'v') {
-        battVoltageUnit = 'V'
+        battVoltageUnit = 'V';
+        unitList.push(1);
     }
     else if (inputList[2] == 'mv') {
-        
+        inputList[5] = inputList[5] * 1000;
+        battVoltageUnit = 'mV';
+        unitList.push(1000);
     }
     else {
-        battVoltageUnit = 'kV'
+        inputList[5] = inputList[5] / 1000;
+        battVoltageUnit = 'kV';
+        unitList.push(0.001);
     }
     //alla tulostus lambdat jotka tulostaa halutun luvun domiin
     const printBattEnergy = (e) => {
@@ -373,30 +389,32 @@ function battEnergyCalc(inputList, mode) {
             if (zeros === 3 || floats === 3 || floats === 1) {
                 //error
                 alert('Syötä kaksi arvoa!');
-                printBattEnergy(0);
-                printBattCurrent(0);
-                printBattVoltage(0);
+                reset();
             }
             else {
                 if (inputList[5] == 0) {
                     //V
                     let vOut = inputList[3] / inputList[4];
                     vOut = parseDesimals(vOut);
+                    vOut = vOut * unitList[2];
                     printBattVoltage(vOut);
                 }
                 else if (inputList[4] == 0) {
                     //ah
                     let ahOut = inputList[3] / inputList[5];
                     ahOut = parseDesimals(ahOut);
+                    ahOut = ahOut * unitList[1];
                     printBattCurrent(ahOut);
                 }
                 else if (inputList[3] == 0) {
                     //wh
                     let whOut = inputList[4] * inputList[5];
                     whOut = parseDesimals(whOut);
+                    whOut = whOut * unitList[0];
                     printBattEnergy(whOut);
                 }
             }
+            printList(unitList);
             break;
         default:
             console.log('Something went wrong :( !');
