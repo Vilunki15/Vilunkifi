@@ -68,6 +68,13 @@ document.addEventListener("DOMContentLoaded", function() {
         const resetButton = document.getElementById("resetButton");
         resetButton.addEventListener("click", battCallBackReset);
     }
+    if (document.body.classList.contains("resistorCodeCalc")) {
+        let lista = ['Tyhjä', 'Musta', 'Ruskea', 'Punainen', 'Oranssi', 'Keltainen', 'Vihreä', 'Sininen', 'Violetti', 'Harmaa', 'Valkoinen', 'Kulta', 'Hopea'];
+        lista.forEach((item) => {
+            console.log('<option value="'+ item +'">'+ item +'</option>')
+        })
+        console.log("toimii")
+    }
 });
 function accelerationCalc(accInputList) {
     //parsitaan listasta null:it pois ja otetaan valuet
