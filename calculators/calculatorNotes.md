@@ -68,7 +68,7 @@
                 valitaan yksikkö kwh / wh ja ah / mah tarvitaan myös jännite
                 Kaavat:
                     Wh = V * Ah
-                    V = Wh / Ah
+                    V = Wh / Ah 
                     Ah = Wh / V
             -virran jakautuminen
                 Syötetään virta ja vastusten arvot
