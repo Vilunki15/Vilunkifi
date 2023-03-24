@@ -55,10 +55,6 @@ const App = () => {
   return (
     <>
       <Text />
-
-
-
-
       <Footer />
     </>
   )
