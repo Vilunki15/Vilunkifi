@@ -1,4 +1,5 @@
 # Vilunkifi
+Sivuejen kehitys jäissä. Uudestaan aloitetaan puhtaalta pöydältä.
 Yksinkertaiset testisivut opiskelujen ohella. Tarkoitus soveltaa HTML, CSS, JS, React, Dart jne. 
 Linkki verkkosivuille: https://vilunki.fi/
 Kommentit ovat suomeksi projektin helpottamiseksi.
